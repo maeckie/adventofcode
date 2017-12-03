@@ -1,7 +1,5 @@
 #!/usr/bin/python
 
-
-
 with open('/Users/marcus/Documents/advent/adventofcode/day 2/input.txt', 'r') as myfile:
     spreadsheet=myfile.readlines()
 
@@ -23,7 +21,6 @@ def part2():
         row = map(int, row)
         row.sort()
         for t in row:
-
             for n in row:
                 div = float(t)/float(n)
                 if div.is_integer() and t != n:
