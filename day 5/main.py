@@ -29,10 +29,7 @@ def part2():
             print puzzle_input
             break
         current = puzzle_input[i]
-        if puzzle_input[i] >= 3:
-            puzzle_input[i] -= 1
-        else:
-            puzzle_input[i] += 1
+        puzzle_input[i] += -1 if puzzle_input[i] >= 3 else 1
         i += current
         steps += 1
 
