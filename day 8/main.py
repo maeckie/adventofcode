@@ -42,12 +42,15 @@ def modifyReg(modify, operation, by, compareWith, compWay, compValue):
         print "We found an unknown operator: %s" % compareWith
         sys.exit(1)
 
-
+maxEver = 0
 
 for instruction in instructions:
     (modify, operation, by, om, compareWith, compWay, compValue) = map(str.rstrip,instruction.split(' '))
     initReg(modify, compareWith)
     modifyReg(modify, operation, by, compareWith, compWay, compValue)
+    if registry[max(registry, key=registry.get)] > maxEver:
+        maxEver = registry[max(registry, key=registry.get)]
     #print registry
 
 print "The max value is %d" % registry[max(registry, key=registry.get)]
+print "The max value ever is: %d" % maxEver
