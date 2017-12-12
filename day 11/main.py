@@ -1,5 +1,6 @@
 #!/usr/bin/python
-
+import operator
+import sys
 with open('/Users/marcus/Documents/advent/adventofcode/day 11/input.txt', 'r') as myfile:
     puzzle_input=''.join(line.rstrip() for line in myfile)
 
@@ -18,6 +19,12 @@ puzzle_input = puzzle_input.split(',')
 #puzzle_input = ['ne','ne','ne', 'sw','sw','sw']
 #puzzle_input = ['ne','ne','sw','sw']
 #puzzle_input = ['se','sw','se','sw','sw']
+
+z = [(1,2,3), (1,2,3), (2,5,6)]
+print reduce((lambda x,y: map(operator.add, x,y)), z)
+sys.exit(1)
+### Alternative as a one liner. Not keeping track of max distance :(
+# print max(map(abs,reduce((lambda x, y: map(operator.add,x,y)), map(lambda a: directions[a], puzzle_input))))
 
 dist = [0,0,0]
 m_dist = 0
