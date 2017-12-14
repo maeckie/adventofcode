@@ -29,17 +29,62 @@ def knotHash(inp):
         ys.append(y)
     return ''.join(ys)
 
+
+def findNeighbours(x,y):
+    if res[x][y] == '1':
+        res[x][y] = 'X'
+    else:
+        return
+
+    if y-1 < 0:
+        my = 0
+    else:
+        my = y-1
+    if y+1 == len(res[x]):
+        py = len(res[x])-1
+    else:
+        py = y+1
+    if x+1 == len(res):
+        px = len(res)-1
+    else:
+        px = x+1
+    if x-1 < 0:
+        mx = 0
+    else:
+        mx = x-1
+
+
+    findNeighbours(x,py)
+    findNeighbours(x,my)
+    findNeighbours(mx,y)
+    findNeighbours(px,y)
+
+
+
 puzzle_input = 'ljoxqyyw'
 #puzzle_input = 'flqrgnkx'
 c_list = [i for i in range(256)]
 
 
 cnt = 0
+groups = 0
 res = {}
+poo = {}
 for i in range(0,128):
     h = knotHash(puzzle_input + '-' + str(i) )
     cnt += ''.join(map(lambda z: bin(int(z, 16))[2:].zfill(4), h)).count('1')
+    res[i]  = list(''.join(map(lambda z: bin(int(z, 16))[2:].zfill(4), h)))
 
+
+
+groups = 0
+for i in range(len(res)):
+    for j in range(len(res[i])):
+        if res[i][j] == '1':
+            findNeighbours(i,j)
+            groups += 1
+        #print poo
 
 
 print "Used count is: %d" % cnt
+print "Found groups: %d" % groups
