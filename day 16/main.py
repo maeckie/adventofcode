@@ -56,8 +56,6 @@ def part2():
             break
         i += 1
     actual_iterations = 1000000000 % i
-
-    print actual_iterations
     for i in range(actual_iterations):
         dance(d_cpy, puzzle_input)
 
