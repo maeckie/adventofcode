@@ -52,7 +52,7 @@ while 1:
         d = getDirection(pos,d)
 
 
-    if maze[pos[0]][pos[1]] in 'ABCDEFGHIJKLMNOPQRST':
+    if maze[pos[0]][pos[1]] in 'ABCDEFGHIJKLMNOPQRSTUVXYZ':
         letters += maze[pos[0]][pos[1]]
 
 
